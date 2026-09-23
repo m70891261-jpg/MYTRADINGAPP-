@@ -26,13 +26,11 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Init Bubblewrap
+      - name: Build APK
         run: |
           mkdir -p build && cd build
-          bubblewrap init --manifest https://your-username.github.io/AITradeApp/manifest.json --directory .
-
-      - name: Build APK
-        run: cd build && bubblewrap build
+          yes | bubblewrap init --manifest https://m70891261-jpg.github.io/MYTRADINGAPP-/manifest.json --directory .
+          bubblewrap build
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
