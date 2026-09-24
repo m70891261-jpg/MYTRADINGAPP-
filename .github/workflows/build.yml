@@ -26,11 +26,29 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Build APK
+      - name: Init Bubblewrap
         run: |
           mkdir -p build && cd build
-          yes | bubblewrap init --manifest https://m70891261-jpg.github.io/MYTRADINGAPP-/manifest.json --directory .
-          bubblewrap build
+          printf "\n\n\n\n\n\n\n\n\n\n" | bubblewrap init --manifest https://m70891261-jpg.github.io/MYTRADINGAPP-/manifest.json --directory . || true
+
+      - name: Create signing key
+        run: |
+          cd build
+          keytool -genkeypair -v \
+            -keystore android.keystore \
+            -alias android \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass android -keypass android \
+            -dname "CN=AITrade, OU=Dev, O=AITrade, L=Delhi, S=Delhi, C=IN"
+
+      - name: Build APK
+        run: |
+          cd build
+          bubblewrap build \
+            --skipPwaValidation \
+            --keystore android.keystore \
+            --keystorePassword android \
+            --keyPassword android
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
