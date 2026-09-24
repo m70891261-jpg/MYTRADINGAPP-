@@ -1,24 +1,32 @@
 {
   "name": "AI Trading App",
   "short_name": "AITrade",
-  "start_url": "index.html",
+  "start_url": "/MYTRADINGAPP-/index.html",
+  "scope": "/MYTRADINGAPP-/",
   "display": "standalone",
   "background_color": "#111111",
   "theme_color": "#00aaff",
   "description": "AI powered trading assistant",
   "orientation": "portrait",
+  "id": "/MYTRADINGAPP-/",
   "icons": [
     {
-      "src": "icon-512.png",
+      "src": "/MYTRADINGAPP-/icon-512.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "/MYTRADINGAPP-/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/MYTRADINGAPP-/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
